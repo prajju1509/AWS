@@ -1,0 +1,40 @@
+How to host simple static website in aws s3
+
+User--->Route53--->S3
+
+1.Create a custome domain using Amazon Route53
+2.Usw a Amazon S3 bucket to host a sample website.
+3.Enable static website hosting and direct the domain to the s3 bucket. 
+
+Bucket Policy to all static website
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::Bucket-Name/*"
+            ]
+        }
+    ]
+} 
+
+
+
+Simple Html Web Page:
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>My Website Home Page</title>
+</head>
+<body>
+  <h1>Welcome to my website</h1>
+  <p>Now hosted on Amazon S3!</p>
+</body>
+</html>
