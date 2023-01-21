@@ -1,0 +1,33 @@
+Transfer your domains between aws accounts
+
+aws configure	>> configure one user
+
+wget https://github.com/barnybug/cli53/releases/download/0.8.16/cli53-linux-amd64
+
+mv cli53-linux-amd64 cli53	>> rename
+
+mv cli53-linux-amd64 cli53	>> moving
+
+chmod 700 cli53		>>giving the execute permision
+
+cli53 export prajju.tk >> domain.com.txt		>>exporting domain records for a file
+
+
+cat domain.com.txt
+
+$ORIGIN prajju.tk.
+@       900     IN      SOA     ns-43.awsdns-05.com. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400
+@       172800  IN      NS      ns-43.awsdns-05.com.
+@       172800  IN      NS      ns-1564.awsdns-03.co.uk.
+@       172800  IN      NS      ns-737.awsdns-28.net.
+@       172800  IN      NS      ns-1339.awsdns-39.org.
+failover        60      IN      A       3.109.49.131 ; AWS routing="FAILOVER" failover="PRIMARY" healthCheckId="a7927015-80a9-4e11-8e08-97379ee9529d" identifier="1"
+failover        300     IN      A       3.111.245.88 ; AWS routing="FAILOVER" failover="SECONDARY" healthCheckId="fec24fc6-ae55-4f80-b521-d59681e1d82f" identifier="2"
+geolocation     60      IN      A       3.109.49.131 ; AWS routing="GEOLOCATION" countryCode="IN" identifier="1"
+geolocation     300     IN      A       3.111.245.88 ; AWS routing="GEOLOCATION" countryCode="US" identifier="2"
+lat     300     IN      A       3.109.49.131 ; AWS routing="LATENCY" region="ap-south-2" identifier="1"
+lat     60      IN      A       3.111.245.88 ; AWS routing="LATENCY" region="ap-east-1" identifier="2"
+multivalue      60      IN      A       3.109.49.131 ; AWS routing="MULTIVALUE" identifier="1"
+multivalue      60      IN      A       3.111.245.88 ; AWS routing="MULTIVALUE" identifier="2"
+weighted        300     IN      A       3.109.49.131 ; AWS routing="WEIGHTED" weight=80 identifier="1"
+weighted        300     IN      A       3.111.245.88 ; AWS routing="WEIGHTED" weight=20 identifier="2"
